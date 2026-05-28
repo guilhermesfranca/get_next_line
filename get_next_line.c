@@ -6,7 +6,7 @@
 /*   By: gfranca <gfranca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 13:55:42 by gfranca           #+#    #+#             */
-/*   Updated: 2026/05/28 15:46:55 by gfranca          ###   ########.fr       */
+/*   Updated: 2026/05/28 15:49:47 by gfranca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ static char	*update_stash(char *stash)
 
 char	*get_next_line(int fd)
 {
-	static t_stash *stash;
+	static char	*stash;
 	char		*line;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	stash->str = read_until_newline(fd, stash->str);
-	if (!stash->str)
+	stash = read_until_newline(fd, stash);
+	if (!stash)
 		return (NULL);
-	line = extract_line(stash->str);
-	stash->str = update_stash(stash->str);
+	line = extract_line(stash);
+	stash = update_stash(stash);
 	return (line);
 }
