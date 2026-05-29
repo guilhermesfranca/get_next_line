@@ -6,7 +6,7 @@
 /*   By: gfranca <gfranca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 14:54:52 by gfranca           #+#    #+#             */
-/*   Updated: 2026/05/28 15:34:36 by gfranca          ###   ########.fr       */
+/*   Updated: 2026/05/29 22:16:37 by gfranca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,22 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	}
 	result[i] = '\0';
 	return (result);
+}
+char	*ft_strdup(const char *s)
+{
+	size_t	size;
+	char	*ptr;
+	size_t	i;
+
+	size = ft_strlen(s);
+	ptr = malloc(size * sizeof(char) + 1);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i <= size)
+	{
+		ptr[i] = s[i];
+		i++;
+	}
+	return (ptr);
 }
